@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jiaoyan.js" type="text/javascript" rel="script"></script>
+    <script src="./js/jquery-3.3.1.js" type="text/javascript" ></script>
+    <script src="./js/utilSession.js" type="text/javascript" ></script>
+   <script >
+   function xiugai2(){
+	   var id=window.localStorage.getItem('updateid');
+	   var aaa=window.localStorage.getItem('updatename');
+	   alert(id);
+	   alert(aaa);
+	   
+       var userid = u_storage.get("userid");
+		if(userid==undefined)userid="";
+       $.ajax({
+       	url:"http://localhost:8080/CRM/co_xiugai",
+       	data:{id,aaa,password:$("#password").val()
+       		,type:$("#type").val(),date:$("#date").val()},//发送的数据
+       	dataType:"json",
+       	tyepe:"post",
+       	contentType:"application/x-www-form-urlencoded",
+       	cache:false,
+       	//拦截器
+			beforeSend:function(request){
+				   request.setRequestHeader("userid",userid);
+			   },
+       	success:function(data){//放回DATA
+       		console.log(data)
+       		if(data==true){
+       			alert("修改成功");
+       			//window.location.href="zhuye.html";
+       			window.location.href="kuchun.html";
+       		}else{
+       			alert("ID错误重新输入");
+       			
+       		}
+       	},
+       		error:function(){
+       			alert("服务器错误")
+       		}
+       })
+   }
+
+   </script>
+    
+</head>
+<body>
+    <div>
+    
+        
+         <!--  <label>菜名<input type="text" id="username" name="username"  onfocus="showTip('span_username','用户名太短要大于6')" onblur="checkUserName(this)" onkeyup="checkUserName(this)">
+             <span id="span_username"></span></label> </br>-->
+        <label>价格<input  id="password" name="password"type="number" onfocus="showTip('span_password','密码太短')" onblur="checkpassword(this)" onkeyup="checkpassword(this)">
+            <span id="span_password"></span></label> </br> 
+        
+        <label>确定价格<input  id="resetpassword"type="number" onfocus="showTip('reset_password','两次密码要相等')" onblur="checkresetpassword(this)" onkeyup="checkresetpassword(this)">
+        <span id="reset_password"></span></label> </br>  
+        <label>库存<input name="type" id="type" type="number" ></label><br>
+        <label>日期<input name="date" type="date"  id="date" ></label><br>
+        <img src="./picture/2.jpg"><br/>
+        <button type="submit"value="注册" onclick="xiugai2()">修改</button><br/>
+    
+    </div>
+</body>
+</html>

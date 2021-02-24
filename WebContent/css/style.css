@@ -1,0 +1,52 @@
+       body { 
+        background-image: url('../picture/7.jpg'); 
+        background-size: 100%; 
+        background-repeat:no-repeat; }
+         #a{
+            border: 0px solid #ff8040;
+	       position:absolute;
+           top:70%;
+           left:70%;
+           margin:-225px 0 0 -450px;
+         }
+         #b{
+        width: 150px;
+	    height: 400px;
+	    
+	    position:absolute;
+        top:70%;
+        left:55%;
+        margin:-225px 0 0 -400px;
+
+         }
+         #c{
+        width: 100%;
+	    height: 225px;
+	    border: 0px solid #ff8080;
+	    position:absolute;
+        top:20%;
+        left:0;
+        margin:-150px 0 0 0;
+         }
+         #d{
+         width:"18%";
+         height:"40%";
+          border: 0px solid #ff8080;
+         position: absolute;
+         top:400px ;
+         left:00px;
+         }
+         .c2{
+         color:#8080c0;
+         }
+         .c3{
+         color:#ff0080;
+         }
+         .c4{
+         color:#00ffff;
+         }
+      
+       
+           
+      
+       

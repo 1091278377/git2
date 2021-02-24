@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jiaoyan.js" type="text/javascript" rel="script"></script>
+    <script src="./js/jquery-3.3.1.js" type="text/javascript" ></script>
+    <script src="./js/utilSession.js" type="text/javascript" ></script>
+    <script >
+      function actionss  (){
+            //var id1 = document.getElementById("id"); 
+            //alert("id"+id.value+"错误");
+            var id=$("#id").val();
+            var username=$("#username").val();
+            var password=$("#password").val();
+            var type=$("#type").val();
+            var date=$("#date").val();
+            console.log(id);
+            console.log(username);
+            console.log(password);
+            console.log(type);
+            console.log(date);
+            //拦截器
+           var userid = u_storage.get("userid");
+		   if(userid==undefined)userid="";
+            $.ajax({
+            	url:"http://localhost:8080/CRM/co_add",
+            	data:{id,username,password,type,date},//发送的数据
+            	dataType:"json",
+            	tyepe:"post",
+            	contentType:"application/x-www-form-urlencoded",
+            	cache:false,
+            	//拦截器
+    			beforeSend:function(request){
+    				   request.setRequestHeader("userid",userid);
+    			   },
+            	success:function(data){//放回DATA
+            		console.log(data)
+            		if(data==true){
+            			alert("添加成功");
+            			//window.location.href="zhuye.html";
+            			window.location.href="kuchun.html";
+            		}else{
+            			alert("ID错误重新输入");
+            			
+            		}
+            	},
+            		error:function(){
+            			alert("服务器错误")
+            		}
+            })
+        }
+        </script>
+</head>
+<body>
+    <div>
+    
+        <label>id<input type="number" name="id" id="id" ></label><br>
+         <label>菜名<input type="text" id="username" name="username"  onfocus="showTip('span_username','用户名太短要大于6')" onblur="checkUserName(this)" onkeyup="checkUserName(this)">
+             <span id="span_username"></span></label> </br>
+        <label>价格<input  id="password" name="password"type="number" onfocus="showTip('span_password','密码太短')" onblur="checkpassword(this)" onkeyup="checkpassword(this)">
+            <span id="span_password"></span></label> </br>  
+        
+        <label>确定价格<input  id="resetpassword"type="number" onfocus="showTip('reset_password','两次密码要相等')" onblur="checkresetpassword(this)" onkeyup="checkresetpassword(this)">
+        <span id="reset_password"></span></label> </br>  
+        <label>库存<input name="type" id="type" type="number" ></label><br>
+        <label>日期<input name="date" type="date"  id="date" ></label><br>
+        <img src="./picture/2.jpg"><br/>
+        <button type="submit"value="注册" onclick="actionss()">添加</button><br/>
+    
+    </div>
+</body>
+</html>

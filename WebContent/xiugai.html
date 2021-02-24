@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jiaoyan.js" type="text/javascript" rel="script"></script>
+    <script src="./js/jquery-3.3.1.js" type="text/javascript" ></script>
+    <script src="./js/utilSession.js" type="text/javascript" ></script>
+   <script>
+   function actionss  (){
+       //var id1 = document.getElementById("id"); 
+       //alert("id"+id.value+"错误");
+       
+       //拦截器
+       var userid = u_storage.get("userid");
+		if(userid==undefined)userid="";
+       $.ajax({
+       	url:"http://localhost:8080/CRM/xiugai",
+       	data:{id:$("#id").val(),username:$("#username").val(),password:$("#password").val()
+       		,type:$("#type").val()},//发送的数据
+       	dataType:"json",
+       	tyepe:"post",
+       	contentType:"application/x-www-form-urlencoded",
+       	cache:false,
+       	//拦截器
+			beforeSend:function(request){
+				   request.setRequestHeader("userid",userid);
+			   },
+       	success:function(data){//放回DATA
+       		console.log(data)
+       		if(data==true){
+       			alert("修改成功");
+       			//window.location.href="zhuye.html";
+       			window.location.href="zhuye.html";
+       		}else{
+       			alert("ID错误重新输入");
+       			
+       		}
+       	},
+       		error:function(){
+       			alert("服务器错误")
+       		}
+       })
+   }</script>
+    
+</head>
+<body>
+    <div>
+    
+        <label>id<input type="number" name="id" id="id" ></label><br>
+        <label>用户名<input type="text" id="username" name="username" onfocus="showTip('span_username','用户名太短要大于6')" onblur="checkUserName(this)" onkeyup="checkUserName(this)">
+             <span id="span_username"></span></label> </br>
+        <label>密码<input type="password" id="password" name="password" onfocus="showTip('span_password','密码太短')" onblur="checkpassword(this)" onkeyup="checkpassword(this)">
+            <span id="span_password"></span></label> </br>  
+        
+        <label>确定密码<input type="password" id="resetpassword"onfocus="showTip('reset_password','两次密码要相等')" onblur="checkresetpassword(this)" onkeyup="checkresetpassword(this)">
+        <span id="reset_password"></span></label> </br>  
+        <label>权限<input name="type" id="type" ></label><br>
+        <img src="./picture/2.jpg"><br/>
+        <button type="submit"value="注册" onclick="actionss()">修改</button><br/>
+    
+    </div>
+    <from action="imgselverlet" method="post" enctype="multipart/form-data">
+            学号:<input name="sno"/><br/>
+            姓名：<input name="sname"/><br/>
+           上传照片  <input type="file" name="spicture"/>
+           <br/>
+       <input type="submit" value="注册"/>       
+    </from>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     
+</head>
+<link href="./css/style.css" rel="stylesheet">  
+<script src="./js/jquery-3.3.1.js" type="text/javascript" ></script>
+<script src="./js/utilSession.js" type="text/javascript" ></script>
+<body onload="getData(0)"><!-- 开始就启动 -->
+    <div id="a">
+    <font size="6" class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;人员管理</font><br>
+    
+        查询: <input type="number" id="id1"/>
+        <button onclick="getData2()" >查询</button>
+   
+      
+    <table id=""  width="700px"  border="1px">
+        <tr>          
+            <td>id</td>
+            <td>name</td>
+            <td>password</td>
+            <td>type</td>
+            <td>操作</td>
+        </tr>
+    <table id="tab"  width="800px"  border="1px">
+        <tr>          
+            <td id="id2">id</td>
+            <td>name</td>
+            <td>password</td>
+            <td>type</td>
+            <td><button class="delete" onclick="shanchu()">删除</button><button class="add">修改</button></td>
+        </tr>
+     
+        <tr>          
+             <td id="id2">id</td>
+            <td>name</td>
+            <td>password</td>
+            <td>type</td>
+            <td><button class="delete" onclick="shanchu()">删除</button> <button class="add">修改</button> </td>
+        </tr>
+   
+    </table>
+    
+    <button onclick="getData(1)" >上一页</button>
+    <h3>1</h3>
+    <button onclick="getData(2)" >下一页</button>
+    
+    <select id="selected">
+       <option>5</option>
+       <option>1</option>
+       <option>2</option>     
+       <option>4</option>     
+       <option>6</option>
+       <option>10</option>
+       <option>15</option>
+       <option>20</option>
+    </select>
+    <form action="">
+       <!-- <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>空格 -->
+       
+      
+        <button><a href="add.html">增加</a></button>
+        <button><a href="xiugai.html">修改</a></button>
+        <button><a href="delete.html">删除</a></button>
+        <button onclick="getData4()"><a href="#">查询谁是管理员</a></button>
+    </form>
+
+    </div>
+    <div id="b">
+        <Ul >
+            <li></li>
+            <li onclick="getData3()"class="c3" ><a href="#" class="c3">人员管理</a></li>
+            <li></li>
+            <li onclick="tiaozhuan1()"><a href="#"class="c2">库存管理</a></li>
+            <li></li>
+            <li><a href="#"class="c2">表单管理</a></li>
+            <li></li>
+            <li><a href="#"class="c2">销售管理</a></li>
+        </Ul>
+    </div>
+    <div id="c" > 
+        <img src="./picture/8.jpg" id="imgs"width="100%" height="100%"
+       >
+        
+    </div>
+    <div id="d" >
+     <h4>美女</h4>
+    <a href="https://www.baidu.com/s?ie=UTF-8&wd=迪丽热巴&tn=88093251_75_hao_pg">
+    <img src="./picture/3.jpg" id="img1" style="display: none; "></a>
+    </div>
+</body>
+<script src="./js/zhuye.js" type="text/javascript">
+</script>
+</html>
